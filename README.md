@@ -1,2 +1,2 @@
 # maze-generator
-Generatore di labirinti interattivo
+Generatore di labirinti

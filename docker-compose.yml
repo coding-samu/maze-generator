@@ -7,24 +7,3 @@ services:
     volumes:
       - ./maze_generator:/app
     command: python maze.py
-
-  web_app:
-    build:
-      context: ./web_app
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    depends_on:
-      - maze_generator
-
-  database:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: mysecretpassword
-
-volumes:
-  db_data:
