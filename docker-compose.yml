@@ -1,17 +1,30 @@
 version: '3.8'
 services:
   maze_generator:
-    build: ./maze_generator
+    build:
+      context: ./maze_generator
+      dockerfile: Dockerfile
     volumes:
       - ./maze_generator:/app
     command: python maze.py
+
   web_app:
-    build: ./web_app
+    build:
+      context: ./web_app
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     depends_on:
       - maze_generator
+
   database:
-    build: ./database
+    build:
+      context: ./database
+      dockerfile: Dockerfile
     volumes:
-      - ./database:/data
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+
+volumes:
+  db_data:
