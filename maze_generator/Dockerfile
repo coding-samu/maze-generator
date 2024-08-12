@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Copia i file del progetto nella directory di lavoro
-COPY maze_generator/ /app/maze_generator/
+COPY / /app/maze_generator/
 COPY requirements.txt /app/
 
 # Installa le dipendenze necessarie
